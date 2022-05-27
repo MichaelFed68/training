@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from math import sqrt
-from os import lseek
 
 # Solution for Lesson Three
 def get_square_roots(num):
