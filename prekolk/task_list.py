@@ -40,20 +40,22 @@ def rotaded_left(obj):
 def rotaded_right(obj):
     return obj[-1:]+ obj[:-1]
 
+# Solution for lesson Eigth
+def find_index(value, data):
+    for (index, element) in enumerate(data):
+        if element == value:
+            return index 
+    else:
+        return None
+
+
 def main():
     print(get_range(10))
     print(get_square_roots(49))
     
-    lst = [1, 3, 5]
+    lst = 'ddiirir4'
 
-    duplicate(lst)
-    print(lst)
-
-    rotate(lst)
-    print(lst)
-
-    print(rotaded_right(lst))
-    print(rotaded_left(lst))
+    print(find_index('4', lst))
 
 if __name__ == '__main__':
     main()
