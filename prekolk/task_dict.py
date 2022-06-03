@@ -10,12 +10,11 @@ def format_user(user):
 
 
 # Soolution for lesson Three
-def count_all(date):
+def count_all(items):
     dict = {}
-    for i in date:
+    for i in items:
         if i in dict:
             continue
-        count_keys = date.count(i)
-        dict[i] = count_keys
+        dict[i] = items.count(i)
     return dict
 # END
