@@ -21,15 +21,17 @@ def count_all(items):
 
 
 # Soolution for lesson Four
+from collections import defaultdict
+
 def collect_indexes(items):
-    result = {}
-    
+    result = defaultdict(list)
+
     if type(items) == dict:
         for key, value in items.items():
-            result.setdefault(value, []).append(key)
+           result[value].append(key)
         return result
     
     for index, elem in enumerate(items):
-        result.setdefault(elem, []).append(index)
+        result[elem].append(index)
     return result
 # END
