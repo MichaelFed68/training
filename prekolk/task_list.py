@@ -62,6 +62,7 @@ def find_index(value, list):
 def find_second_index1(value, list):
     iterator = iter(list)
     first_index = find_index(value, iterator)
+    
     if first_index != None:
         second_index = find_index(value, iterator)
         if second_index != None:
