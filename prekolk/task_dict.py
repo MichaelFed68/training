@@ -18,3 +18,18 @@ def count_all(items):
         dict[i] = items.count(i)
     return dict
 # END
+
+
+# Soolution for lesson Four
+def collect_indexes(items):
+    result = {}
+    
+    if type(items) == dict:
+        for key, value in items.items():
+            result.setdefault(value, []).append(key)
+        return result
+    
+    for index, elem in enumerate(items):
+        result.setdefault(elem, []).append(index)
+    return result
+# END
