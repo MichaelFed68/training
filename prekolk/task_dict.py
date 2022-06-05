@@ -35,3 +35,10 @@ def collect_indexes(items):
         result[elem].append(index)
     return result
 # END
+
+
+# Solution for lesson Five
+def all_unique(items):
+    list_items = list(items)
+    return len(list_items) == len(set(list_items))
+# END 
