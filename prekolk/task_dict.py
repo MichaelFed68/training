@@ -8,7 +8,6 @@ def format_user(user):
     return f"{user.get('name')}, {user.get('age')}"
 # END
 
-
 # Soolution for lesson Three
 def count_all(items):
     dict = {}
@@ -18,7 +17,6 @@ def count_all(items):
         dict[i] = items.count(i)
     return dict
 # END
-
 
 # Soolution for lesson Four
 from collections import defaultdict
@@ -36,9 +34,15 @@ def collect_indexes(items):
     return result
 # END
 
-
 # Solution for lesson Five
 def all_unique(items):
     list_items = list(items)
     return len(list_items) == len(set(list_items))
 # END 
+
+def main():
+    lis = [2929, 'FFF,', 19, 10]
+    print(all_unique(lis))  
+
+if __name__ == '__main__':
+    main()
