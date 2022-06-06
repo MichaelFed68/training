@@ -48,7 +48,7 @@ def rotaded_right(obj):
 # END
 
 
-# Solution for lesson Eigth
+# Solution for lesson Eight
 def find_index(value, list):
     for (index, item) in enumerate(list):
         if item == value:
