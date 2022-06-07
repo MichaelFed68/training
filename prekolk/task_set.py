@@ -17,3 +17,9 @@ def toggled(flag, items):
         new_set.add(flag)
     return new_set
 # END
+
+def main():
+    l = [1, 2, 3]
+
+if __name__ == '__main__':
+    main()
