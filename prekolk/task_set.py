@@ -18,8 +18,34 @@ def toggled(flag, items):
     return new_set
 # END
 
+
+# Solution for lesson Seven
+def diff_keys(old, new):
+    o, n = set(old), set(new)
+    return {
+        'kept': o & n,
+        'added': n - o,
+        'removed': o - n
+    }
+# OR
+def another_diff_keys(old, new):
+    return {
+        'kepts': old.keys() & new.keys(),
+        'added': new.keys() - old.keys(),
+        'removed': old.keys() - new.keys()
+    }
+# END
+
+
+# Solution for lesson Eigth
+
+# END
+
+
 def main():
-    l = [1, 2, 3]
+    n = {'name': 'Bob', 'age': 21}
+    s = {'name': 'Bob', 'lol': 1}
+    print(another_diff_keys(s, n))  
 
 if __name__ == '__main__':
     main()
