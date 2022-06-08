@@ -37,15 +37,18 @@ def another_diff_keys(old, new):
 # END
 
 
-# Solution for lesson Eigth
-
+# Solution for lesson Eight
+def aplly_diff(set, dict):
+    set.update(dict.get('add', ''))
+    set.difference_update(dict.get('remove', ''))
 # END
 
 
 def main():
-    n = {'name': 'Bob', 'age': 21}
-    s = {'name': 'Bob', 'lol': 1}
-    print(another_diff_keys(s, n))  
+    target = {'a', 'b'}
+    diff = {'remove': {'a'}, 'emove': {'х'}}
+    aplly_diff(target, diff)
+    print(target)
 
 if __name__ == '__main__':
     main()
