@@ -27,7 +27,10 @@ def get_colors():
 
 
 # Solution Four
-
+def updatded(dictionary, **kwargs):
+    copy_dictionary = dictionary.copy()
+    copy_dictionary.update(kwargs)
+    return copy_dictionary
 # END
 
 
@@ -36,8 +39,9 @@ def get_colors():
 # END
 
 def main():
-    colors = get_colors()
-    print(colors['green'])
+    d = {'Passports': 2, 'cats': 5}
+    print(updated(d, cats=4, wolfs=4, dogs=5))
 
+    
 if __name__ == '__main__':
     main()
