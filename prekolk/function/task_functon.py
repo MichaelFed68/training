@@ -3,6 +3,7 @@
 
 # Solution Two
 from ctypes.wintypes import RGB
+from unittest import result
 
 
 def greet(name, *args):
@@ -27,7 +28,7 @@ def get_colors():
 
 
 # Solution Four
-def updatded(dictionary, **kwargs):
+def updated(dictionary, **kwargs):
     copy_dictionary = dictionary.copy()
     copy_dictionary.update(kwargs)
     return copy_dictionary
@@ -35,13 +36,28 @@ def updatded(dictionary, **kwargs):
 
 
 # Solution Five
-
+def call_twice(function, *args, **kwargs):
+    first = function(*args, **kwargs)
+    second = function(*args, **kwargs)
+    return first, second
 # END
 
-def main():
-    d = {'Passports': 2, 'cats': 5}
-    print(updated(d, cats=4, wolfs=4, dogs=5))
 
-    
+# Solution Six
+def filter_map(function, iterable):
+    res = []
+    for predicate, value in map(function, iterable):
+        if predicate:
+            res.append(value)
+    return res
+# OR
+def filter_map_another(function, iterable):
+    return [pair[1] for pair in map(function, iterable) if pair[0]]
+# END
+
+
+def main():
+    e = 1
+
 if __name__ == '__main__':
     main()
