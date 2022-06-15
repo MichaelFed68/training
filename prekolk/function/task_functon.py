@@ -44,20 +44,42 @@ def call_twice(function, *args, **kwargs):
 
 
 # Solution Six
-def filter_map(function, iterable):
+def filter_map(func, iterable):
     res = []
-    for predicate, value in map(function, iterable):
+    for predicate, value in map(func, iterable):
         if predicate:
             res.append(value)
     return res
 # OR
-def filter_map_another(function, iterable):
-    return [pair[1] for pair in map(function, iterable) if pair[0]]
+def filter_map_another(func, iterable):
+    return [pair[1] for pair in map(func, iterable) if pair[0]]
+# END
+
+
+# Solution Seven
+from functools import reduce
+from operator import getitem
+
+def keep_truthful(iterable):
+    return filter(None, iterable)
+
+def abs_sum(iterable):
+    return sum(map(abs, iterable))
+
+def walk(dict, iterable_path):
+    return reduce(getitem, iterable_path, dict)
 # END
 
 
 def main():
-    e = 1
+    f = walk({'a':{7: {'b': 42}}}, ['a', 7, 'b'])
+    print(f)
+
+    a = list(keep_truthful([False, None, 0, 1, True]))
+    print(a)
+
+    b = abs_sum([1, -4, 0, -3, 7])
+    print(b)
 
 if __name__ == '__main__':
     main()
