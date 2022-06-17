@@ -2,13 +2,10 @@
 
 
 # Solution Two
-from ctypes.wintypes import RGB
-from unittest import result
-
-
 def greet(name, *args):
     names = " and ".join((name,) + args)
-    return 'Hello, {}!'.format(names)
+    string_name = 'Hello, {}!'.format(names)
+    return string_name
 
 # END
 
@@ -23,7 +20,7 @@ def get_colors():
         red=rgb(red=255),
         green=rgb(green=255),
         blue=rgb(blue=255)
-        )
+    )
 # END
 
 
@@ -71,15 +68,49 @@ def walk(dict, iterable_path):
 # END
 
 
+# Solution Eight
+def partial_apply(func, arg1):
+        def inner(arg2):
+            return func(arg1, arg2)
+        return inner
+ 
+def flip(func):
+    def inner(arg1, arg2):
+        return func(arg2, arg1)
+    return inner
+# END
+
+
+# Solution Nine
+def make_module(step=1):
+    return {
+        'inc': lambda x: x + step,
+        'dec': lambda x: x - step
+    }    
+# END
+
+
+# Solution Ten
+def memoized(func):
+    memory = {}
+
+    def make_mem(num):
+        if num in memory:
+            return memory[num]
+        memory[num] = func(num)
+        return memory[num]
+
+    return make_mem
+# END
+
+
 def main():
-    f = walk({'a':{7: {'b': 42}}}, ['a', 7, 'b'])
-    print(f)
-
-    a = list(keep_truthful([False, None, 0, 1, True]))
-    print(a)
-
-    b = abs_sum([1, -4, 0, -3, 7])
-    print(b)
+    @memoized
+    def f(x):
+        print('Calculating...')
+        return x * 10
+    print(f(1))
+    print(f(1))
 
 if __name__ == '__main__':
     main()
