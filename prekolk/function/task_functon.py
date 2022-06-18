@@ -104,13 +104,46 @@ def memoized(func):
 # END
 
 
+# Solution Eleven
+from functools import wraps
+
+
+def memoizing(max_size):
+    def wrapped(func):
+        keys = []
+        memory = {}
+        @wraps(func)
+        def inner(num):
+            res = memory.get(num)
+            if res is None:
+                res = func(num)
+                keys.append(num)
+                if len(keys) > max_size:
+                    del memory[keys.pop(0)]
+                    memory[num] = res
+            return res
+        return inner
+    return wrapped
+# END
+
+
 def main():
-    @memoized
+    @memoizing(3)
     def f(x):
-        print('Calculating...')
+        """Multiplying by 10"""
+        print('Calculating..., x = {}'.format(x))
         return x * 10
+
     print(f(1))
     print(f(1))
+    print(f(2))
+    print(f(3))
+    print(f.__closure__[1].cell_contents)
+    print(f.__closure__[3].cell_contents)
+    print(f(4))
+    print(help(f))
+    print(f.__closure__[1].cell_contents)
+    print(f.__closure__[3].cell_contents)
 
 if __name__ == '__main__':
     main()
