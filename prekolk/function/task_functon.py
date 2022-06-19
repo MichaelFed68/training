@@ -129,16 +129,25 @@ def memoizing(max_size): # обернуть с параметрами
 
 
 # Solution Twelve
+def is_odd(num):
+    if num < 2:
+        return bool(num)
+    return is_even(num - 1)
+   
 
+def is_even(num):
+    if num == 0:
+        return True
+    return is_odd(num - 1)
 # END
 
 
 def main():
     @memoizing(3)
-    def f(x):
+    def f(num):
         """Multiplying by 10"""
         print('Calculating..., x = {}'.format(x))
-        return x * 10
+        return num * 10
 
     print(f(1))
     print(f(1))
