@@ -107,23 +107,29 @@ def memoized(func):
 # Solution Eleven
 from functools import wraps
 
+# декоратор работает только для функций, возвращающих числа
 
-def memoizing(max_size):
-    def wrapped(func):
-        keys = []
-        memory = {}
-        @wraps(func)
-        def inner(num):
-            res = memory.get(num)
-            if res is None:
-                res = func(num)
-                keys.append(num)
-                if len(keys) > max_size:
-                    del memory[keys.pop(0)]
-                    memory[num] = res
-            return res
+def memoizing(max_size): # обернуть с параметрами
+    def wrapped(func): # обернуть и вернуть функцию, где лежит словарь, список, данная функция и параметры 
+        keys = [] # хранить ключи, не более данного параметра
+        memory = {} # хранить кючи с значениями(значение - ключ преобразованный функцией)
+        @wraps(func) # обернуть исходную функцию для хранения атрибутов имени и docstrings
+        def inner(num): # конечная замкнутая функция, которая возвращается
+            res = memory.get(num) # получить переменную с вовзартом значения из словаря
+            if res is None: # если ключа нет то:
+                keys.append(num) # добавить в список ключ
+                res = func(num) # вычислить в переменную значение
+                if len(keys) > max_size: # если список переполнен, то:
+                    del memory[keys.pop(0)] # удалить из списка самый старый ключ и удалить эту пару из словаря
+                memory[num] = res # добавить в словарь текущую пару
+            return res # вернуть пару
         return inner
     return wrapped
+# END
+
+
+# Solution Twelve
+
 # END
 
 
