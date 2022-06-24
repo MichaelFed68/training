@@ -13,7 +13,6 @@ def odds_from_odds(list_of_lists):
     return list(map(get_odds, get_odds(list_of_lists)))
 
 
-
 def keep_odds_from_odds(list_of_lists):
     del list_of_lists[1::2]
     for item in list_of_lists:
@@ -28,7 +27,8 @@ def non_empty_truths(list_of_lists):
 
 
 # Solution lesson Four
-
+def number_of_unique_letters(str_):
+    return len({char for char in str_.lower() if char.isalpha()})
 # END
 
 
