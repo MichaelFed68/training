@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 
-
 # Solution lesson Two
 from operator import itemgetter
+
+
 def get_odds(x):
     itemgetter(slice(None, None, 2))
 
+
 def get_odds_2(x):
     return x[::2]
-    
+
+
 def odds_from_odds(list_of_lists):
     return list(map(get_odds, get_odds(list_of_lists)))
 
