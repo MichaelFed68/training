@@ -2,9 +2,9 @@
 
 from math import sqrt
 
+
 # Solution for Lesson Three
 def get_square_roots(num):
-
     if num < 0:
         return None
     elif num == 0:
@@ -12,6 +12,7 @@ def get_square_roots(num):
     else:
         root = sqrt(num)
         return [-root, root]
+
 
 def get_range(num):
     if num <= 0:
@@ -43,8 +44,9 @@ def rotate(list):
 def rotaded_left(obj):
     return obj[1:] + obj[:1]
 
+
 def rotaded_right(obj):
-    return obj[-1:]+ obj[:-1]
+    return obj[-1:] + obj[:-1]
 # END
 
 
@@ -52,7 +54,7 @@ def rotaded_right(obj):
 def find_index(value, list):
     for (index, item) in enumerate(list):
         if item == value:
-            return index 
+            return index
     else:
         return None
 # END
@@ -62,18 +64,19 @@ def find_index(value, list):
 def find_second_index1(value, list):
     iterator = iter(list)
     first_index = find_index(value, iterator)
-    
-    if first_index != None:
+
+    if first_index is not None:
         second_index = find_index(value, iterator)
-        if second_index != None:
+        if second_index is not None:
             return first_index + second_index + 1
     return None
-#END
+# END
 
 
 def main():
     lis = [2929, 'FFF,', 19, 10]
     print(find_second_index1(19, lis))
+
 
 if __name__ == '__main__':
     main()
