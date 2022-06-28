@@ -152,8 +152,8 @@ def main():
     def double(number):
         print('Calculating ...')
         return number * 5
-    
-    
+   
+
     double(5)
     double(5)
 
