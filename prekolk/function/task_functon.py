@@ -98,13 +98,13 @@ def make_module(step=1):
 def memoized(func):
     memory = {}
 
-    def make_mem(num):
+    def inner(num):
         if num in memory:
             return memory[num]
         memory[num] = func(num)
         return memory[num]
 
-    return make_mem
+    return inner
 # END
 
 
@@ -148,22 +148,16 @@ def is_even(num):
 
 
 def main():
-    @memoizing(3)
-    def f(num):
-        """Multiplying by 10"""
-        print('Calculating..., x = {}'.format(num))
-        return num * 10
+    @memoized
+    def double(number):
+        print('Calculating ...')
+        return number * 5
+    
+    
+    double(5)
+    double(5)
 
-    print(f(1))
-    print(f(1))
-    print(f(2))
-    print(f(3))
-    print(f.__closure__[1].cell_contents)
-    print(f.__closure__[3].cell_contents)
-    print(f(4))
-    print(help(f))
-    print(f.__closure__[1].cell_contents)
-    print(f.__closure__[3].cell_contents)
+
 
 
 if __name__ == '__main__':
