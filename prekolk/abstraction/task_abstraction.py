@@ -5,10 +5,10 @@ from math import sqrt
 
 
 # Solution Three
-def calculate_distance(first_point, second_point):
-   x1, y1, x2, y2 = [i if i > 0 else abs(i) for i in first_point + second_point]
-
-   return sqrt(((x1 + x2) ** 2) + ((y1 + y2) ** 2))
+def calculate_distance(point1, point2):
+    x1, y1 = point1
+    x2, y2 = point2
+    return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 # END
 
 
