@@ -13,13 +13,16 @@ def test_with_empty_lists():
 
 
 def test_make_decart_point():
-    assert make_decart_point(1, 4) == {'x': 1, 'y': 4}
+    assert make_decart_point(4, 8) == {
+        'angle': 1.1071487177940904,
+        'radius': 8.94427190999916
+    }
 
 
 def test_get_x_and_get_y():
-    point = make_decart_point(1, 4)
-    assert get_x(point) == 1
-    assert get_y(point) == 4
+    point = make_decart_point(4, 8)
+    assert get_x(point) == 4
+    assert get_y(point) == 8
 
 
 def test_make_segment():
@@ -39,4 +42,4 @@ def test_get_begin_point_and_get_end_point():
 
 def test_get_mid_point_of_segment():
     segment = make_segment(make_decart_point(3, 2), make_decart_point(1, -4))
-    assert get_mid_point_of_segment(segment) == {'x': 2.0, 'y': -1.0}
+    assert get_mid_point_of_segment(segment) == make_decart_point(2.0, -1.0)

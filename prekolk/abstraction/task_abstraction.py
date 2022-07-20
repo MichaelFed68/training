@@ -1,27 +1,40 @@
 #!/usr/bin/env python3
 
-from math import sqrt
+import math
 
 
 # Solution Three
 def calculate_distance(point1, point2):
     x1, y1 = point1
     x2, y2 = point2
-    return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 # END
 
 
-# Solution Four
+# Solution Four and Five
 def make_decart_point(x, y):
-    return {'x': x, 'y': y}
+    return {
+        'angle': math.atan2(y, x),
+        'radius': math.sqrt(x ** 2 + y ** 2)
+    }
+
+
+def get_angle(point):
+    return point['angle']
+
+
+def get_radius(point):
+    return point['radius']
 
 
 def get_x(point):
-    return point['x']
+    x = round(get_radius(point) * math.cos(get_angle(point)))
+    return x
 
 
 def get_y(point):
-    return point['y']
+    y = round(get_radius(point)* math.sin(get_angle(point)))
+    return y
 
 
 def make_segment(point1, point2):
@@ -42,12 +55,8 @@ def get_mid_point_of_segment(segment):
 
     x = (get_x(begin_point) + get_x(end_point)) / 2
     y = (get_y(begin_point) + get_y(end_point)) / 2
-    
+
     return make_decart_point(x, y)
-# END
-
-
-# Solution Five
 # END
 
 
