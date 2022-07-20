@@ -1,10 +1,5 @@
 import pytest
-from prekolk.abstraction.task_abstraction import calculate_distance
-from prekolk.abstraction.task_abstraction import make_decart_point
-from prekolk.abstraction.task_abstraction import get_x, get_y
-from prekolk.abstraction.task_abstraction import make_segment
-from prekolk.abstraction.task_abstraction import get_begin_point, get_end_point
-from prekolk.abstraction.task_abstraction import get_mid_point_of_segment
+from prekolk.abstraction.task_abstraction import *
 
 
 def test_calculate_distance():
@@ -32,6 +27,14 @@ def test_make_segment():
     point2 = make_decart_point(0, 0)
     dictionary = {'begin_point': point1, 'end_point': point2}
     assert make_segment(point1, point2) == dictionary
+
+
+def test_get_begin_point_and_get_end_point():
+    point1 = make_decart_point(3, 2)
+    point2 = make_decart_point(0, 0)
+    segment = make_segment(point1, point2)
+    assert get_begin_point(segment) == point1
+    assert get_end_point(segment) == point2
 
 
 def test_get_mid_point_of_segment():
