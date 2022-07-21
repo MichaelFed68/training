@@ -1,0 +1,26 @@
+name: Python CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
+      name: Set up Python3
+      uses: actions/setup-python@v2
+      name: Install dependencies
+      run: |
+        python3 -m pip install --upgrape pip
+        python3 -m pip install poetry
+        make install
+      name: Run flake8 and pytest
+      run: |
+        make check
+      name: Run pytest-coverage
+      run: |
+        make test-coverage
