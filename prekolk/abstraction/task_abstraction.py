@@ -126,6 +126,49 @@ def contains_origin(rectangle):
 
 
 # Solution Seven
+def make_rational(numer, denom):
+    gcd_ = math.gcd(numer, denom)
+
+    return {
+        'numer': numer // gcd_,
+        'denom': denom // gcd_
+    }
+
+
+def get_numer(fraction):
+    return fraction['numer']
+
+
+def get_denom(fraction):
+    return fraction['denom']
+
+
+def add_fractions(fraction1, fraction2):
+    numer1 = get_numer(fraction1)
+    denom1 = get_denom(fraction1)
+    numer2 = get_numer(fraction2)
+    denom2 = get_denom(fraction2)
+
+    return make_rational(
+        numer1 * denom2 + numer2 * denom1,
+        denom1 * denom2
+    )
+
+
+def sub_fractions(fraction1, fraction2):
+    numer1 = get_numer(fraction1)
+    denom1 = get_denom(fraction1)
+    numer2 = get_numer(fraction2)
+    denom2 = get_denom(fraction2)
+
+    return make_rational(
+        numer1 * denom2 - numer2 * denom1,
+        denom1 * denom2
+    )
+
+
+def rat_to_string(fraction):
+    return f'{get_numer(fraction)}/{get_denom(fraction)}'
 # END
 
 

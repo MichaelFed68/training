@@ -12,11 +12,11 @@ def test_with_empty_lists():
         calculate_distance([], [])
 
 
-# def test_make_decart_point():
-#    assert make_decart_point(4, 8) == {
-#        'angle': 1.1071487177940904,
-#        'radius': 8.94427190999916
-#    }
+def test_make_decart_point():
+    assert make_decart_point(4, 8) == {
+        'angle': 1.1071487177940904,
+        'radius': 8.94427190999916
+    }
 
 
 def test_get_x_and_get_y():
@@ -57,3 +57,43 @@ def test_contains_origin():
 
     rectangle2 = make_rectangle(point2, 5, 2)
     assert contains_origin(rectangle2) is False
+
+
+def test_make_rational():
+    assert make_rational(3, 9) == {'numer': 1, 'denom': 3}
+
+
+@pytest.fixture
+def fraction1():
+    return make_rational(3, 9)
+
+
+@pytest.fixture
+def fraction2():
+    return make_rational(10, 3)
+
+
+@pytest.fixture
+def fraction3():
+    return make_rational(10, 4)
+
+
+def test_get_numer_and_get_dennom(fraction1):
+    assert get_numer(fraction1) == 1
+    assert get_denom(fraction1) == 3
+
+
+def test_rat_to_string(fraction1, fraction3):
+    assert rat_to_string(fraction1) == '1/3'
+    assert rat_to_string(fraction3) == '5/2'
+    assert rat_to_string(make_rational(-1, 3)) == '-1/3'
+
+
+def test_add_fractions(fraction1, fraction2, fraction3):
+    assert add_fractions(fraction1, fraction2) == make_rational(11, 3)
+    assert add_fractions(fraction1, fraction3) == make_rational(17, 6)
+
+
+def test_sub_fractions(fraction1, fraction2, fraction3):
+    assert sub_fractions(fraction1, fraction2) == make_rational(-9, 3)
+    assert sub_fractions(fraction1, fraction3) == make_rational(-13, 6)
