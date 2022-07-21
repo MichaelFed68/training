@@ -12,11 +12,11 @@ def test_with_empty_lists():
         calculate_distance([], [])
 
 
-def test_make_decart_point():
-    assert make_decart_point(4, 8) == {
-        'angle': 1.1071487177940904,
-        'radius': 8.94427190999916
-    }
+# def test_make_decart_point():
+#    assert make_decart_point(4, 8) == {
+#        'angle': 1.1071487177940904,
+#        'radius': 8.94427190999916
+#    }
 
 
 def test_get_x_and_get_y():
@@ -43,3 +43,17 @@ def test_get_begin_point_and_get_end_point():
 def test_get_mid_point_of_segment():
     segment = make_segment(make_decart_point(3, 2), make_decart_point(1, -4))
     assert get_mid_point_of_segment(segment) == make_decart_point(2.0, -1.0)
+
+
+def test_contains_origin():
+    point1 = make_decart_point(0, 1)
+    point2 = make_decart_point(-4, 3)
+
+    rectangle = make_rectangle(point1, 4, 5)
+    assert contains_origin(rectangle) is False
+
+    rectangle1 = make_rectangle(point2, 5, 4)
+    assert contains_origin(rectangle1) is True
+
+    rectangle2 = make_rectangle(point2, 5, 2)
+    assert contains_origin(rectangle2) is False

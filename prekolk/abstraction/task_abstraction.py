@@ -13,6 +13,7 @@ def calculate_distance(point1, point2):
 
 # Solution Four and Five
 def make_decart_point(x, y):
+    # return {'x': x, 'y': y}
     return {
         'angle': math.atan2(y, x),
         'radius': math.sqrt(x ** 2 + y ** 2)
@@ -28,13 +29,13 @@ def get_radius(point):
 
 
 def get_x(point):
-    x = round(get_radius(point) * math.cos(get_angle(point)))
-    return x
+    return round(get_radius(point) * math.cos(get_angle(point)))
+    # return point['x']
 
 
 def get_y(point):
-    y = round(get_radius(point)* math.sin(get_angle(point)))
-    return y
+    return round(get_radius(point) * math.sin(get_angle(point)))
+    # return point['y']
 
 
 def make_segment(point1, point2):
@@ -61,6 +62,66 @@ def get_mid_point_of_segment(segment):
 
 
 # Solution Six
+def make_rectangle(point, width, height):
+    return {
+        'start_point': point,
+        'width': width,
+        'height': height
+    }
+
+
+def get_start_point(rectangle):
+    return rectangle['start_point']
+
+
+def get_width(rectangle):
+    return rectangle['width']
+
+
+def get_height(rectangle):
+    return rectangle['height']
+
+
+def get_quadrant(point):
+    x = get_x(point)
+    y = get_y(point)
+
+    if x > 0 and y > 0:
+        return 1
+    elif x < 0 and y > 0:
+        return 2
+    elif x < 0 and y < 0:
+        return 3
+    elif x > 0 and y < 0:
+        return 4
+
+
+def my_contains_origin(rectangle):
+    a = get_start_point(rectangle)
+
+    x_from_width = get_x(a) + get_width(rectangle)
+    y_from_height = get_y(a) - get_height(rectangle)
+
+    b = make_decart_point(x_from_width, get_y(a))
+    c = make_decart_point(get_x(a), y_from_height)
+    d = make_decart_point(x_from_width, y_from_height)
+
+    origin = set()
+    for i in [a, b, c, d]:
+        origin.add(get_quadrant(i))
+
+    return len(origin) == 4
+# OR
+
+
+def contains_origin(rectangle):
+    up_left = get_start_point(rectangle)
+    down_right = make_decart_point(
+        get_x(up_left) + get_width(rectangle),
+        get_y(up_left) - get_height(rectangle),
+    )
+
+    return get_quadrant(up_left) == 2 and get_quadrant(down_right) == 4
 # END
 
 
