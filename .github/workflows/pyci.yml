@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-python@v2
       - name: Install dependencies
         run: |
-          python3 -m pip install --upgrape pip
+          python3 -m pip install --upgrade pip
           python3 -m pip install poetry
           make install
       - name: Run flake8 and pytest
