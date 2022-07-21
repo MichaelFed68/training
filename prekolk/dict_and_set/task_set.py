@@ -28,6 +28,8 @@ def diff_keys(old, new):
         'removed': o - n
     }
 # OR
+
+
 def another_diff_keys(old, new):
     return {
         'kepts': old.keys() & new.keys(),
@@ -49,6 +51,7 @@ def main():
     diff = {'remove': {'a'}, 'emove': {'х'}}
     aplly_diff(target, diff)
     print(target)
+
 
 if __name__ == '__main__':
     main()

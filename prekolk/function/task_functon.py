@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+from functools import reduce
+from operator import getitem
+from functools import wraps
+
+
 # Solution Two
 def greet(name, *args):
     names = " and ".join((name,) + args)
@@ -54,10 +59,6 @@ def filter_map_another(func, iterable):
 
 
 # Solution Seven
-from functools import reduce
-from operator import getitem
-
-
 def keep_truthful(iterable):
     return filter(None, iterable)
 
@@ -109,9 +110,6 @@ def memoized(func):
 
 
 # Solution Eleven
-from functools import wraps
-
-
 # декоратор работает для функций, возвращающих числа
 def memoizing(max_size):
     def wrapped(func):
@@ -152,12 +150,9 @@ def main():
     def double(number):
         print('Calculating ...')
         return number * 5
-   
 
     double(5)
     double(5)
-
-
 
 
 if __name__ == '__main__':
