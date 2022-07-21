@@ -8,7 +8,7 @@ test-coverage:
 	poetry run pytest --cov=prekolk
 
 lint:
-	poetry run flake8
+	poetry run flake8 --ignore F405,F403
 
 selfcheck:
 	poetry check
