@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 # Solution for lesson Six
 def toggle(flag, items):
     if flag in items:
