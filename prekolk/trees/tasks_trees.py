@@ -2,6 +2,8 @@
 
 from itertools import chain
 
+from hexlet import fs
+
 
 # Lesson Two
 def remove_first_level1(tree):
@@ -30,6 +32,27 @@ def remove_first_level3(tree):
 
 
 # Lesson Three
+def generate():
+    file_hierarchy = fs.mkdir('python-package', [
+        fs.mkfile('Makefile'),
+        fs.mkfile('README.md'),
+        fs.mkdir('dist'),
+        fs.mkdir('tests', [
+            fs.mkfile('test_solution.py')
+        ]),
+        fs.mkfile('pyproject.toml'),
+        fs.mkdir('.venv', [
+            fs.mkdir('lib', [
+                fs.mkdir('python3.6', [
+                    fs.mkdir('site-packages', [
+                        fs.mkfile('hexlet-python-package.egg-link')
+                    ])
+                ])
+            ])
+        ], {'owner': 'root', 'hidden': False})
+    ], {'hidden': True})
+
+    return file_hierarchy
 # END
 
 
