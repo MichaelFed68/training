@@ -6,6 +6,7 @@ authors = ["Michael Fedorov <mikhailfedorov1939@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+hexlet-immutable-fs-trees = "^0.1.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
