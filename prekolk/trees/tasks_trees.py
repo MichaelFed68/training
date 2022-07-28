@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from copy import deepcopy
 from itertools import chain
 
 from hexlet import fs
@@ -34,18 +35,18 @@ def remove_first_level3(tree):
 # Lesson Three
 def generate():
     file_hierarchy = fs.mkdir('python-package', [
-        fs.mkfile('Makefile'),
+        fs.mkfile('Makefile.jpg', {'size': 50}),
         fs.mkfile('README.md'),
         fs.mkdir('dist'),
         fs.mkdir('tests', [
-            fs.mkfile('test_solution.py')
+            fs.mkfile('test_solution.jpg', {'size': 50})
         ]),
         fs.mkfile('pyproject.toml'),
         fs.mkdir('.venv', [
             fs.mkdir('lib', [
                 fs.mkdir('python3.6', [
                     fs.mkdir('site-packages', [
-                        fs.mkfile('hexlet-python-package.egg-link')
+                        fs.mkfile('hexlet-python-package.jpg', {'size': 50})
                     ])
                 ])
             ])
@@ -57,6 +58,23 @@ def generate():
 
 
 # Lesson Four
+def compress_images(node):
+    name = fs.get_name(node)
+    new_meta = deepcopy(fs.get_meta(node))
+
+    if fs.is_file(node):
+        if name[-4:] == '.jpg':
+            new_meta['size'] = new_meta['size'] // 2
+            compressed = fs.mkfile(name, new_meta)
+            return compressed
+        else:
+            return node
+
+    children = fs.get_children(node)
+    new_children = list(map(compress_images, children))
+
+    new_nested_node = fs.mkdir(name, new_children, new_meta)
+    return new_nested_node
 # END
 
 
