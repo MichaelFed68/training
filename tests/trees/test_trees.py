@@ -116,17 +116,17 @@ def test_compress_images_simple():
             mkfile('avatar.jpg', {'size': 100}),
             mkfile('photo.jpg', {'size': 150})
         ],
-    {'hide': False},
+        {'hide': False},
     )
 
     expected = {
-    'name': 'my_doc',
-    'type': 'directory',
-    'children': [
-        {'name': 'avatar.jpg', 'meta': {'size': 50}, 'type': 'file'},
-        {'name': 'photo.jpg', 'meta': {'size': 75}, 'type': 'file'},
-    ],
-    'meta': {'hide': False},
+        'name': 'my_doc',
+        'type': 'directory',
+        'children': [
+            {'name': 'avatar.jpg', 'meta': {'size': 50}, 'type': 'file'},
+            {'name': 'photo.jpg', 'meta': {'size': 75}, 'type': 'file'},
+        ],
+        'meta': {'hide': False},
     }
 
     assert compress_images(tree) == expected
@@ -141,9 +141,9 @@ def test_compress_images():
             mkfile('passport.jpg', {'size': 200}),
             mkfile('family.jpg', {'size': 150}),
             mkfile('addresses', {'size': 125}),
-            mkdir('assets', [
-                mkfile('lol.jpg', {'size': 200}),
-                ],
+            mkdir(
+                'assets',
+                [mkfile('lol.jpg', {'size': 200})],
             ),
         ],
         {'test': 'haha'},
