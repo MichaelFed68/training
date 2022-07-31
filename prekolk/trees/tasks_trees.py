@@ -62,19 +62,16 @@ def compress_images(node):
     name = fs.get_name(node)
     new_meta = deepcopy(fs.get_meta(node))
 
-    if fs.is_file(node):
-        if name[-4:] == '.jpg':
-            new_meta['size'] = new_meta['size'] // 2
-            compressed = fs.mkfile(name, new_meta)
-            return compressed
-        else:
-            return node
+    if fs.is_file(node) and name.endswith('.jpg'):
+        new_meta['size'] = new_meta['size'] // 2
+        return fs.mkfile(name, new_meta)
+
+    elif fs.is_file(node):
+        return fs.mkfile(name, new_meta)
 
     children = fs.get_children(node)
     new_children = list(map(compress_images, children))
-
-    new_nested_node = fs.mkdir(name, new_children, new_meta)
-    return new_nested_node
+    return fs.mkdir(name, new_children, new_meta)
 # END
 
 
