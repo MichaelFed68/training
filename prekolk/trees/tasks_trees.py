@@ -46,7 +46,7 @@ def generate():
             fs.mkdir('lib', [
                 fs.mkdir('python3.6', [
                     fs.mkdir('site-packages', [
-                        fs.mkfile('hexlet-python-package.jpg', {'size': 50})
+                        fs.mkfile('hexlet-python-package.jpg', {'size': 49})
                     ])
                 ])
             ])
