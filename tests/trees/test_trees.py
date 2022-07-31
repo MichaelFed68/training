@@ -30,6 +30,7 @@ def test_remove_first_level3(trees_level):
     assert remove_first_level3(next(trees_gen)) == [5, 1, 9]
     assert remove_first_level3(next(trees_gen)) == [5, [1, 9]]
 
+
 @pytest.fixture
 def tree():
     tree = fs.mkdir('python-package', [
