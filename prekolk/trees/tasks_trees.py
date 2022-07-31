@@ -76,6 +76,31 @@ def compress_images(node):
 
 
 # Lesson Five
+def downcase_file_names(tree):
+    name = fs.get_name(tree)
+    new_meta = fs.get_meta(tree)
+
+    if fs.is_file(tree):
+        return fs.mkfile(name.lower(), new_meta)
+
+    children = fs.get_children(tree)
+    new_children = list(map(downcase_file_names, children))
+    return fs.mkdir(name, new_children, new_meta)
+# END
+
+
+# Lesson six
+
+# END
+
+
+# Lesson Seven
+
+# END
+
+
+# Lesson Eight
+
 # END
 
 
