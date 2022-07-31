@@ -90,7 +90,28 @@ def downcase_file_names(tree):
 
 
 # Lesson six
+def get_hidden_files_count1(tree):
+    name = fs.get_name(tree)
+    if fs.is_file(tree) and name.startswith('.'):
+        return 1
+    elif fs.is_directory(tree):
+        children = fs.get_children(tree)
+        hidden_files_count = sum(map(get_hidden_files_count1, children))
+        return hidden_files_count
+    return 0
+# OR
 
+
+def is_hidden_file(node):
+    return fs.is_file(node) and fs.get_name(node).startswith('.')
+
+
+def get_hidden_files_count2(tree):
+    if fs.is_file(tree):
+        return 1 if is_hidden_file(tree) else 0
+    children = fs.get_children(tree)
+    hidden_files_count = sum(map(get_hidden_files_count2, children))
+    return hidden_files_count
 # END
 
 

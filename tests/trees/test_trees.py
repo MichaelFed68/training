@@ -35,7 +35,7 @@ def test_remove_first_level3(trees_level):
 def tree():
     tree = fs.mkdir('python-package', [
         fs.mkfile('Makefile.jpg', {'size': 50}),
-        fs.mkfile('README.md'),
+        fs.mkfile('.README.md'),
         fs.mkdir('dIst'),
         fs.mkdir('tests', [
             fs.mkfile('test_solution.jpg', {'size': 50})
@@ -45,7 +45,7 @@ def tree():
             fs.mkdir('lib', [
                 fs.mkdir('pythoN3.6', [
                     fs.mkdir('site-packages', [
-                        fs.mkfile('hexlet-pythoN-package.jpg', {'size': 49})
+                        fs.mkfile('.hexlet-pythoN-package.jpg', {'size': 49})
                     ])
                 ])
             ])
@@ -145,7 +145,7 @@ def test_compress_images(tree):
                 'meta': {'size': 25}
             },
             {
-                'name': 'README.md',
+                'name': '.README.md',
                 'type': 'file',
                 'meta': {}
             },
@@ -193,7 +193,7 @@ def test_compress_images(tree):
                                         'meta': {},
                                         'children': [
                                             {
-                                                'name': 'hexlet-pythoN-package.jpg', # noqa
+                                                'name': '.hexlet-pythoN-package.jpg', # noqa
                                                 'type': 'file',
                                                 'meta': {'size': 24}
                                             }
@@ -223,7 +223,7 @@ def test_downcase_file_names(tree):
                 'meta': {'size': 50}
             },
             {
-                'name': 'readme.md',
+                'name': '.readme.md',
                 'type': 'file',
                 'meta': {}
             },
@@ -271,7 +271,7 @@ def test_downcase_file_names(tree):
                                         'meta': {},
                                         'children': [
                                             {
-                                                'name': 'hexlet-python-package.jpg', # noqa
+                                                'name': '.hexlet-python-package.jpg', # noqa
                                                 'type': 'file',
                                                 'meta': {'size': 49}
                                             }
@@ -287,3 +287,11 @@ def test_downcase_file_names(tree):
     }
 
     assert downcase_file_names(tree) == expected
+
+
+def test_get_hidden_files_count1(tree):
+    assert get_hidden_files_count1(tree) == 2
+
+
+def test_get_hidden_files_count2(tree):
+    assert get_hidden_files_count2(tree) == 2
