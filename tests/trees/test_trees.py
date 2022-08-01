@@ -295,3 +295,25 @@ def test_get_hidden_files_count1(tree):
 
 def test_get_hidden_files_count2(tree):
     assert get_hidden_files_count2(tree) == 2
+
+
+def test_du():
+    tree = mkdir('/', [
+        mkdir('etc', [
+            mkdir('apache'),
+            mkdir('nginx', [
+                mkfile('nginx.conf', {'size': 800}),
+            ]),
+            mkdir('consul', [
+                mkfile('.config.json', {'size': 1200}),
+                mkfile('data', {'size': 8200}),
+                mkfile('raft', {'size': 80}),
+            ]),
+        ]),
+        mkfile('hosts', {'size': 3500}),
+        mkfile('resolve', {'size': 1000}),
+    ])
+
+    expected = [('etc', 10280), ('hosts', 3500), ('resolve', 1000)]
+
+    assert du(tree) == expected

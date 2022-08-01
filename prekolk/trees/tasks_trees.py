@@ -116,7 +116,22 @@ def get_hidden_files_count2(tree):
 
 
 # Lesson Seven
+def get_total_size(node):
 
+    if fs.is_file(node):
+        return fs.get_meta(node).get('size', 0)
+    children = fs.get_children(node)
+    size_children = sum(map(get_total_size, children))
+    return size_children
+
+
+def du(tree):
+    children = fs.get_children(tree)
+    unsized_items = map(
+        lambda child: (fs.get_name(child), get_total_size(child)),
+        children,
+    )
+    return sorted(unsized_items, key=lambda item: item[1], reverse=True)
 # END
 
 
