@@ -70,7 +70,7 @@ def compress_images(node):
         return fs.mkfile(name, new_meta)
 
     children = fs.get_children(node)
-    new_children = list(map(compress_images, children))
+    new_children = [compress_images(child) for child in children]
     return fs.mkdir(name, new_children, new_meta)
 # END
 
@@ -84,7 +84,7 @@ def downcase_file_names(tree):
         return fs.mkfile(name.lower(), new_meta)
 
     children = fs.get_children(tree)
-    new_children = list(map(downcase_file_names, children))
+    new_children = [downcase_file_names(child) for child in children]
     return fs.mkdir(name, new_children, new_meta)
 # END
 
@@ -111,6 +111,7 @@ def get_hidden_files_count2(tree):
         return 1 if is_hidden_file(tree) else 0
     children = fs.get_children(tree)
     hidden_files_count = sum(map(get_hidden_files_count2, children))
+
     return hidden_files_count
 # END
 
@@ -121,7 +122,7 @@ def get_total_size(node):
     if fs.is_file(node):
         return fs.get_meta(node).get('size', 0)
     children = fs.get_children(node)
-    size_children = sum(map(get_total_size, children))
+    size_children = sum(get_total_size(child) for child in children)
     return size_children
 
 
