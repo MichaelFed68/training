@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import os
 from copy import deepcopy
 from itertools import chain
 
@@ -137,7 +137,20 @@ def du(tree):
 
 
 # Lesson Eight
+def find_files_by_name(tree, substring):
 
+    def walk(node, path):
+        name = fs.get_name(node)
+        ancestry = os.path.join(path, name)
+        if fs.is_file(node):
+            if substring in name:
+                return ancestry
+            return []
+        children = fs.get_children(node)
+        matches = (walk(child, ancestry) for child in children)
+        return fs.flatten(matches)
+
+    return walk(tree, '')
 # END
 
 
