@@ -49,8 +49,17 @@ blue.blue = 255
 # END
 
 
-# Solution Three
+# Solution Six
+class Counter:
+    value = 0
+
+    def increase(self, delta=1):
+        self.value = max(self.value + delta, 0)
+
+    def decrease(self, delta=1):
+        self.increase(-delta)
 # END
+
 
 # Solution Three
 # END
