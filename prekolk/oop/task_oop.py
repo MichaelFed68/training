@@ -14,7 +14,15 @@ class Color:
 
 
 # Solution Four
+CLASSES = {}
 
+
+def add(clazz):
+    key = '{module}{name}'.format(
+        module=clazz.__module__,
+        name=clazz.__name__,
+    )
+    CLASSES[key] = clazz
 # END
 
 
