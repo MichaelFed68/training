@@ -7,8 +7,9 @@ def test_rgb2tuple():
     assert task_oop.rgb2tuple(task_oop.blue) == (0, 0, 255)
 
 
-def test_Counter():
-    counter = task_oop.Counter()
+def test_CounterOne():
+    counter = task_oop.CounterOne()
+
     assert counter.value == 0
     counter.increase(100)
     assert counter.value == 100
@@ -16,3 +17,14 @@ def test_Counter():
     assert counter.value == 60
     counter.decrease(100)
     assert counter.value == 0
+
+
+def test_CounterTWo():
+    instance1 = task_oop.CounterTwo()
+    instance2 = instance1.increase().increase(9).decrease(5)
+    instance3 = instance2.decrease(10)
+
+    assert instance1 is not instance2
+    assert instance1.value == 0
+    assert instance2.value == 5
+    assert instance3.value == 0

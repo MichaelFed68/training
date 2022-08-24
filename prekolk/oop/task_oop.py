@@ -50,7 +50,7 @@ blue.blue = 255
 
 
 # Solution Six
-class Counter:
+class CounterOne:
     value = 0
 
     def increase(self, delta=1):
@@ -61,11 +61,22 @@ class Counter:
 # END
 
 
-# Solution Three
+# Solution Seven
+class CounterTwo:
+    def __init__(self, value=0):
+        self.value = value
+
+    def increase(self, delta=1):
+        return CounterTwo(max(self.value + delta, 0))
+
+    def decrease(self, delta=1):
+        return self.increase(-delta)
 # END
+
 
 # Solution Three
 # END
+
 
 # Solution Three
 # END
