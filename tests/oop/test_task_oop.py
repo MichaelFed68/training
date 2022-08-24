@@ -19,7 +19,7 @@ def test_CounterOne():
     assert counter.value == 0
 
 
-def test_CounterTWo():
+def test_CounterTwo():
     instance1 = task_oop.CounterTwo()
     instance2 = instance1.increase().increase(9).decrease(5)
     instance3 = instance2.decrease(10)
@@ -28,3 +28,14 @@ def test_CounterTWo():
     assert instance1.value == 0
     assert instance2.value == 5
     assert instance3.value == 0
+
+
+def test_HourClock():
+    clock = task_oop.HourClock()
+
+    clock.hours = 10
+    assert clock.hours == 10
+    clock.hours = -1
+    assert clock.hours == 11
+    clock.hours = 123
+    assert clock.hours == 3

@@ -74,8 +74,19 @@ class CounterTwo:
 # END
 
 
-# Solution Three
-# END
+# Solution Eight
+class HourClock:
+    def __init__(self):
+        self.__position = 0
+
+    @property
+    def hours(self):
+        return self.__position
+
+    @hours.setter
+    def hours(self, new_position):
+        self.__position = new_position % 12
+# ENDS
 
 
 # Solution Three
