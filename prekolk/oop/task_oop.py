@@ -86,10 +86,56 @@ class HourClock:
     @hours.setter
     def hours(self, new_position):
         self.__position = new_position % 12
-# ENDS
+# END
 
 
-# Solution Three
+# Solution Nine
+class Counter(object):
+    """A simple integral counter."""
+
+    def __init__(self):
+        """Initialize a new counter with zero as starting value."""
+        self.value = 0
+
+    def inc(self, amount=1):
+        """Increment counter's value."""
+        self.value = max(self.value + amount, 0)
+
+    def dec(self, amount=1):
+        """Decrement counter's value."""
+        self.inc(-amount)
+
+
+class LimitedCounter(Counter):
+    """A ounter with limited maximal value."""
+
+    def __init__(self, limit):
+        """Initialize a new counter with some limit."""
+        super().__init__()
+        self.__limit = limit
+
+    def inc(self, amount=1):
+        super().inc(amount)
+        self.value = min(self.value, self.__limit)
+
+
+# OR
+class LimitedCounter2(Counter):
+    """A counter with limited maximal value."""
+
+    def __init__(self, limit):
+        """Initialize a new counter with some limit."""
+        self.__limit = limit
+        self.__actual_value = 0
+        super().__init__()
+
+    @property
+    def value(self):
+        return self.__actual_value
+
+    @value.setter
+    def value(self, new_value):
+        self.__actual_value = min(new_value, self.__limit)
 # END
 
 def main():
