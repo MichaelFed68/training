@@ -39,3 +39,20 @@ def test_HourClock():
     assert clock.hours == 11
     clock.hours = 123
     assert clock.hours == 3
+
+
+def test_suppress():
+    @task_oop.suppress(ZeroDivisionError, or_return='Error')
+    def divide(num, divisor):
+        """Documentation"""
+        return num // divisor
+
+    @task_oop.suppress(ZeroDivisionError)
+    def foo():
+        return 5 // 0
+
+    assert divide.__doc__ == 'Documentation'
+    assert divide.__name__ == 'divide'
+    assert divide(5, divisor=0) == 'Error'
+    assert divide(6, 2) == 3
+    assert foo() is None

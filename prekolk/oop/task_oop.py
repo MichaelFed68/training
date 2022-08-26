@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from functools import wraps
 
 
 # Solution Three
@@ -137,6 +138,21 @@ class LimitedCounter2(Counter):
     def value(self, new_value):
         self.__actual_value = min(new_value, self.__limit)
 # END
+
+
+# Solution Ten
+def suppress(exception, *, or_return=None):
+    def wrapper(func):
+        @wraps(func)
+        def inner(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except exception:
+                return or_return
+        return inner
+    return wrapper
+# END
+
 
 def main():
     pass
