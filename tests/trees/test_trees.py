@@ -1,6 +1,6 @@
 import pytest
 from hexlet.fs import *
-from prekolk.trees.tasks_trees import *
+from training.trees.tasks_trees import *
 
 
 @pytest.fixture

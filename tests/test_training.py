@@ -1,4 +1,4 @@
-from prekolk import __version__
+from training import __version__
 
 
 def test_version():

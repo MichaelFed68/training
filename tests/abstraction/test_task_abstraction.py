@@ -1,5 +1,5 @@
 import pytest
-from prekolk.abstraction.task_abstraction import *
+from training.abstraction.task_abstraction import *
 
 
 def test_calculate_distance():

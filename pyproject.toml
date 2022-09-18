@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "prekolk"
+name = "training"
 version = "0.1.0"
 description = ""
 authors = ["Michael Fedorov <mikhailfedorov1939@gmail.com>"]

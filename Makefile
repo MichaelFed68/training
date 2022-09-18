@@ -5,7 +5,7 @@ test:
 	poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=prekolk
+	poetry run pytest --cov=training
 
 lint:
 	poetry run flake8 --ignore F405,F403

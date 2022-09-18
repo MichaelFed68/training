@@ -1,4 +1,4 @@
-from prekolk.oop import task_oop
+from training.oop import task_oop
 
 
 def test_rgb2tuple():
