@@ -1,4 +1,5 @@
 import pytest
+
 from training.abstraction.task_abstraction import *
 
 
