@@ -6,9 +6,8 @@
 интерфейсом через импортированный модуль 'main_abstr'. 
 """
 
-import math
-
 import training.abstraction.task_abstraction as main_abstr
+from training.compound_data import pairs
 
 
 def get_symmetrical_point(point):
@@ -24,3 +23,22 @@ def get_symmetrical_point(point):
         y = -abs(y)
 
     return main_abstr.make_decart_point(x, y)
+
+
+# Уровень абстракции для работы с сущностью "точка"
+# Begin
+def make_point(x, y):
+    return pairs.cons(x, y)
+
+
+def get_x(point):
+    return pairs.car(point)
+
+
+def get_y(point):
+    return pairs.cdr(point)
+
+
+def to_string(point):
+    return str(point)
+# End
