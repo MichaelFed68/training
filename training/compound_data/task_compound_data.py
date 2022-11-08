@@ -42,3 +42,25 @@ def get_y(point):
 def to_string(point):
     return str(point)
 # End
+
+
+def make_segment(point1, point2):
+    return [point1, point2]
+
+
+def get_start(segment):
+    return segment[0]
+
+
+def get_end(segment):
+    return segment[1]
+
+
+def get_middle(segment):
+    point1 = get_start(segment)
+    point2 = get_end(segment)
+
+    middle_x = (get_x(point1) + get_x(point2)) / 2
+    middle_y = (get_y(point1) + get_y(point2)) / 2
+
+    return make_point(middle_x, middle_y)
