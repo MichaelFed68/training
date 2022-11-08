@@ -25,7 +25,7 @@ def reverse_pair(pair):
 
 def sum_of_pairs(pair1, pair2):
     sum_of_obj1 = car(pair1) + car(pair2)
-    sum_of_obj2 = cdr(pair1) + cdr(pair2) 
+    sum_of_obj2 = cdr(pair1) + cdr(pair2)
     return cons(sum_of_obj1, sum_of_obj2)
 
 

@@ -1,5 +1,3 @@
-import pytest
-
 from training.compound_data import pairs
 
 
