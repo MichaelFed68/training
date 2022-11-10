@@ -101,24 +101,6 @@ def get_quadrant(point):
         return 4
 
 
-def my_contains_origin(rectangle):
-    a = get_start_point(rectangle)
-
-    x_from_width = get_x(a) + get_width(rectangle)
-    y_from_height = get_y(a) - get_height(rectangle)
-
-    b = make_decart_point(x_from_width, get_y(a))
-    c = make_decart_point(get_x(a), y_from_height)
-    d = make_decart_point(x_from_width, y_from_height)
-
-    origin = set()
-    for i in [a, b, c, d]:
-        origin.add(get_quadrant(i))
-
-    return len(origin) == 4
-# OR
-
-
 def contains_origin(rectangle):
     up_left = get_start_point(rectangle)
     down_right = make_decart_point(
@@ -127,7 +109,6 @@ def contains_origin(rectangle):
     )
 
     return get_quadrant(up_left) == 2 and get_quadrant(down_right) == 4
-# END
 
 
 # Solution Seven
